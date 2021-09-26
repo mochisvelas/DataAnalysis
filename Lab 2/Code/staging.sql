@@ -32,43 +32,53 @@ GO
 
 CREATE TABLE [staging].[Orden](
 	[ID_Orden] [int] NOT NULL,
-	[ID_Cliente] [int] not null,
-	[ID_Ciudad] [int] not null,
-	[ID_StatusOrden] [int] NULL,
-	[ID_Parte] [int] null,
+	[ID_DetalleOrden] [int] NOT NULL,
+	[ID_Descuento] [int] NOT NULL,
+	[Cantidad] [int] not null,
+	[PorcentajeDescuento] [decimal] (2,2) null,
 	[Total_Orden] [decimal](12, 2) NULL,
 	[Fecha_Orden] datetime null,
-	[FechaModificacion] DATETIME NULL,
-
+	[Fecha_Modificacion] DATETIME NULL,
+	[ID_Cliente] [int] not null,
+	[ID_Parte] [int] null,
+	[ID_Ciudad] [int] not null	
 ) ON [PRIMARY]
 GO
 
 --Query para llenar datos en Staging
-SELECT o.ID_Orden, 
-c.ID_Cliente,
-o.ID_Ciudad,
-       o.ID_StatusOrden,
-	   do.ID_Partes,
-       o.Total_Orden,
-	   o.Fecha_Orden,
-       o.FechaModificacion 
+SELECT 
+o.ID_Orden,
+do.ID_DetalleOrden,
+do.ID_Descuento,
+do.Cantidad,
+dc.PorcentajeDescuento,
+o.Total_Orden,
+o.Fecha_Orden,
+o.FechaModificacion,
+o.ID_Cliente,
+do.ID_Partes,
+o.ID_Ciudad
 FROM dbo.Orden o
-inner join dbo.Clientes c on (c.ID_Cliente = o.ID_Cliente)
 inner join dbo.Detalle_orden do on (do.ID_Orden = o.ID_Orden)
+inner join dbo.Descuento dc on (dc.ID_Descuento = do.ID_Descuento)
 WHERE ((Fecha_Orden>?) OR (FechaModificacion>?))
 go
 
-SELECT o.ID_Orden, 
-c.ID_Cliente,
-o.ID_Ciudad,
-       o.ID_StatusOrden,
-	   do.ID_Partes,
-       o.Total_Orden,
-	   o.Fecha_Orden,
-       o.FechaModificacion 
+SELECT 
+o.ID_Orden,
+do.ID_DetalleOrden,
+do.ID_Descuento,
+do.Cantidad,
+dc.PorcentajeDescuento,
+o.Total_Orden,
+o.Fecha_Orden,
+o.FechaModificacion,
+o.ID_Cliente,
+do.ID_Partes,
+o.ID_Ciudad
 FROM RepuestosWeb.dbo.Orden o
-inner join RepuestosWeb.dbo.Clientes c on (c.ID_Cliente = o.ID_Cliente)
 inner join RepuestosWeb.dbo.Detalle_orden do on (do.ID_Orden = o.ID_Orden)
+inner join RepuestosWeb.dbo.Descuento dc on (dc.ID_Descuento = do.ID_Descuento)
 --WHERE ((Fecha_Orden>?) OR (FechaModificacion>?))
 WHERE ((Fecha_Orden>'2021-09-19') OR (FechaModificacion>'2021-09-19'))
 go

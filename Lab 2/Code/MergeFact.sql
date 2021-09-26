@@ -1,4 +1,3 @@
---Script de SP para MERGE
 CREATE or ALTER PROCEDURE USP_MergeFact
 as
 BEGIN
@@ -6,38 +5,45 @@ BEGIN
 	SET NOCOUNT ON;
 	BEGIN TRY
 		BEGIN TRAN
+		--generar nuevo gui para la tabla de log, y declaracion de variables de maxima fecha de ejecucion con cantidad de registros afectados
 		DECLARE @NuevoGUIDInsert UNIQUEIDENTIFIER = NEWID(), @MaxFechaEjecucion DATETIME, @RowsAffected INT
-
-		INSERT INTO FactLog ([ID_Batch], [FechaEjecucion], [NuevosRegistros])
+		--print @MaxFechaEjecucion
+		--insertar en tabla de log
+		INSERT INTO FactLog (ID_Batch, FechaEjecucion, NuevosRegistros)
 		VALUES (@NuevoGUIDInsert,NULL,NULL)
-		
+		--merge me ayuda integrar tablas: si vienen cosas del destino que no existen insertarlas, si existen cosas en los dos modificarlas y si no esta en fuente pero si en el destino borrarlas
+		--aca en los hechos lo que mas se espera son inserciones nuevas
 		MERGE Fact.Orden AS T
 		USING (
-			SELECT 
-			[SK_Partes],
-			[SK_Geografia],
-			[SK_Clientes],
-			[DateKey],
-			o.ID_Orden,
-			o.ID_StatusOrden,
-			o.Total_Orden,
-			o.Fecha_Orden,
-			getdate() as FechaCreacion,
-			'ETL' as UsuarioCreacion,
-			NULL as FechaModificacion,
-			NULL as UsuarioModificacion,
-			@NuevoGUIDINsert as ID_Batch,
-			'ssis' as ID_SourceSystem
-			FROM STAGING.Orden o
-				INNER JOIN Dimension.Partes p ON(p.ID_Parte = o.ID_Parte and o.Fecha_Orden BETWEEN p.FechaInicioValidez AND ISNULL(p.FechaFinValidez, '9999-12-31')) 
-				INNER JOIN Dimension.Geografia g ON(g.ID_Ciudad = o.ID_Ciudad and o.Fecha_Orden BETWEEN g.FechaInicioValidez AND ISNULL(g.FechaFinValidez, '9999-12-31')) 
-				INNER JOIN Dimension.Clientes c ON(c.ID_Cliente = o.ID_Cliente and o.Fecha_Orden between c.FechaInicioValidez and isnull(c.FechaFinValidez, '9999-12-31'))
-				LEFT JOIN Dimension.Fecha F ON(CAST( (CAST(YEAR(o.Fecha_Orden) AS VARCHAR(4)))+left('0'+CAST(MONTH(o.Fecha_Orden) AS VARCHAR(4)),2)+left('0'+(CAST(DAY(o.Fecha_Orden) AS VARCHAR(4))),2) AS INT)  = F.DateKey)
-				) AS S ON (S.ID_Orden = T.ID_Orden)
+			select
+				p.SK_Partes,
+				g.SK_Geografia,
+				c.SK_Clientes,
+				DateKey,
+				so.ID_Orden,
+				so.ID_DetalleOrden,
+				so.ID_Descuento,
+				so.Cantidad,
+				so.PorcentajeDescuento,
+				so.Total_Orden,
+				so.Fecha_Orden,
+				so.Fecha_Modificacion,				
+				getdate() as FechaCreacion,
+				'ETL' as UsuarioCreacion, 
+				NULL as FechaModificacion, 
+				NULL as UsuarioModificacion, 
+				@NuevoGUIDINsert as ID_Batch,
+				'ssis' as ID_SourceSystem
+			from staging.Orden so
+			inner join Dimension.Partes p on (so.ID_Parte = p.ID_Parte and so.Fecha_Orden between p.FechaInicioValidez and isnull(p.FechaFinValidez, '9999-12-31'))
+			inner join Dimension.Geografia g on (so.ID_Ciudad = g.ID_Ciudad and so.Fecha_Orden between g.FechaInicioValidez and isnull(g.FechaFinValidez, '9999-12-31'))
+			inner join Dimension.Clientes c on (so.ID_Cliente = c.ID_Cliente and so.Fecha_Orden between c.FechaInicioValidez and isnull(c.FechaFinValidez, '9999-12-31'))
+			left join Dimension.Fecha f on (CAST( (CAST(YEAR(so.Fecha_Orden) AS VARCHAR(4)))+left('0'+CAST(MONTH(so.Fecha_Orden) AS VARCHAR(4)),2)+left('0'+(CAST(DAY(so.Fecha_Orden) AS VARCHAR(4))),2) AS INT)  = f.DateKey)
+			) AS S ON (S.ID_Orden = T.ID_Orden)
 
 		WHEN NOT MATCHED BY TARGET THEN --No existe en Fact
-		INSERT ([SK_Partes], [SK_Geografia], [SK_Clientes], [DateKey], [ID_Orden], [ID_StatusOrden], [Total_Orden], [Fecha_Orden], [FechaCreacion], [UsuarioCreacion], [FechaModificacion], [UsuarioModificacion], [ID_Batch], [ID_SourceSystem])
-		VALUES (S.[SK_Partes], S.[SK_Geografia], S.[SK_Clientes], S.[DateKey], S.[ID_Orden], S.[ID_StatusOrden], S.[Total_Orden], S.[Fecha_Orden], S.[FechaCreacion], S.[UsuarioCreacion], S.[FechaModificacion], S.[UsuarioModificacion], S.[ID_Batch], S.[ID_SourceSystem]);
+		INSERT (SK_Partes, SK_Geografia, SK_Clientes, DateKey, ID_Orden, ID_DetalleOrden, ID_Descuento, Cantidad, PorcentajeDescuento, Total_Orden, Fecha_Orden, Fecha_Modificacion, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, ID_Batch, ID_SourceSystem)
+		VALUES (S.SK_Partes, S.SK_Geografia, S.SK_Clientes, S.DateKey, S.ID_Orden, S.ID_DetalleOrden, S.ID_Descuento, S.Cantidad, S.PorcentajeDescuento, S.Total_Orden, S.Fecha_Orden, S.Fecha_Modificacion, S.FechaCreacion, S.UsuarioCreacion,S.FechaModificacion, S.UsuarioModificacion, S.ID_Batch, S.ID_SourceSystem);
 
 		SET @RowsAffected =@@ROWCOUNT
 
@@ -46,7 +52,7 @@ BEGIN
 			SELECT MAX(Fecha_Orden) as MaxFechaEjecucion
 			FROM FACT.Orden
 			UNION
-			SELECT MAX(FechaModificacion)  as MaxFechaEjecucion
+			SELECT MAX(Fecha_Modificacion)  as MaxFechaEjecucion
 			FROM FACT.Orden
 		)AS A
 

@@ -32,10 +32,12 @@ select *
 from RepuestosWeb.dbo.Orden
 
 insert into RepuestosWeb.dbo.Orden ([ID_Cliente], [ID_Ciudad], [ID_StatusOrden], [Total_Orden], [Fecha_Orden]) values
-(1,1,1,30,GETDATE());
+(1,1,1,69,GETDATE());
 
 insert into RepuestosWeb.dbo.Detalle_orden ([ID_Orden], [ID_Partes], [ID_Descuento], [Cantidad]) values
 (1,1,1,20);
+
+select * from RepuestosWeb.dbo.Orden
 
 SELECT ISNULL(MAX(FechaEjecucion),'1900-01-01') AS UltimaFecha
 FROM FactLog

@@ -49,6 +49,10 @@ GO
 	CREATE TYPE [UDT_Decimal12.2] FROM DECIMAL(12,2)
 	GO
 
+	--Tipo Decimal 2,2
+	CREATE TYPE [UDT_Decimal2.2] FROM DECIMAL(2,2)
+	GO
+
 --Int
 	create type [UDT_Int] from int
 	go
@@ -73,8 +77,10 @@ CREATE TABLE [Dimension].[Partes](
 	[SK_Partes] [dbo].[UDT_SK] IDENTITY(1,1) NOT NULL,
 	[ID_Parte] [dbo].[UDT_PK] NULL,
 	[ID_Categoria] [dbo].[UDT_PK] NULL,
+	[ID_Linea] [dbo].[UDT_PK] NULL,
 	[NombreParte] [dbo].[UDT_VarcharCorto] NULL,
 	[NombreCategoria] [dbo].[UDT_VarcharCorto] NULL,
+	[NombreLinea] [dbo].[UDT_VarcharCorto] NULL,
 	--Columnas SCD Tipo 2
 	[FechaInicioValidez] DATETIME NOT NULL DEFAULT(GETDATE()),
 	[FechaFinValidez] DATETIME NULL,
@@ -210,9 +216,13 @@ CREATE TABLE [Fact].[Orden](
 	[SK_Clientes] [dbo].[UDT_SK] NULL,
 	[DateKey] [int] NULL,
 	[ID_Orden] [dbo].[UDT_PK] NULL,
-	[ID_StatusOrden] [dbo].[UDT_PK] NULL,
+	[ID_DetalleOrden] [dbo].[UDT_PK] NULL,
+	[ID_Descuento] [dbo].[UDT_PK] NULL,
+	[Cantidad] [dbo].[UDT_Int] NULL,
+	[PorcentajeDescuento] [dbo].[UDT_Decimal2.2] NULL,
 	[Total_Orden] [dbo].[UDT_Decimal12.2] NULL,
 	[Fecha_Orden] DATETIME NOT NULL,
+	[Fecha_Modificacion] datetime null,
 	--Columnas Auditoria
 	FechaCreacion DATETIME NOT NULL DEFAULT(GETDATE()),
 	UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT(SUSER_NAME()),
@@ -289,54 +299,59 @@ GO
 	GO
 
 --DimPartes
-INSERT INTO Dimension.Partes
-	(ID_Parte, 
-	 ID_Categoria, 
-	 NombreParte, 
-	 NombreCategoria,
-	 [FechaInicioValidez],
-	 [FechaFinValidez],
-	 FechaCreacion,
-	 UsuarioCreacion,
-	 FechaModificacion,
-	 UsuarioModificacion,
-	 ID_Batch,
-	 ID_SourceSystem
-	)
-	SELECT p.ID_Partes, 
-			p.ID_Categoria, 
-			p.Nombre as NombreParte, 
-			c.Nombre as NombreCategoria
-			  --Columnas Auditoria
-			  ,GETDATE() AS FechaCreacion
-			  ,CAST(SUSER_NAME() AS nvarchar(100)) AS UsuarioCreacion
-			  ,GETDATE() AS FechaModificacion
-			  ,CAST(SUSER_NAME() AS nvarchar(100)) AS UsuarioModificacion
-			  ,CAST('2020-01-01' AS DATETIME) as FechaInicioValidez
+--INSERT INTO Dimension.Partes
+--	(ID_Parte, 
+--	 ID_Categoria,
+--	 ID_Linea,
+--	 NombreParte, 
+--	 NombreCategoria,
+--	 NombreLinea,
+--	 [FechaInicioValidez],
+--	 [FechaFinValidez],
+--	 FechaCreacion,
+--	 UsuarioCreacion,
+--	 FechaModificacion,
+--	 UsuarioModificacion,
+--	 ID_Batch,
+--	 ID_SourceSystem
+--	)
+SELECT p.ID_Partes, 
+		p.ID_Categoria,
+		l.ID_Linea,
+		p.Nombre as NombreParte, 
+		c.Nombre as NombreCategoria,
+		l.Nombre as NombreLinea,
+			--Columnas Auditoria
+			GETDATE() AS FechaCreacion
+			,CAST(SUSER_NAME() AS nvarchar(100)) AS UsuarioCreacion
+			,GETDATE() AS FechaModificacion
+			,CAST(SUSER_NAME() AS nvarchar(100)) AS UsuarioModificacion
+			,CAST('2020-01-01' AS DATETIME) as FechaInicioValidez
 
-	FROM RepuestosWeb.dbo.Partes p
-		INNER JOIN RepuestosWeb.dbo.Categoria c ON(c.ID_Categoria = p.ID_Categoria);
+FROM RepuestosWeb.dbo.Partes p
+	INNER JOIN RepuestosWeb.dbo.Categoria c ON(c.ID_Categoria = p.ID_Categoria)
+	inner join RepuestosWeb.dbo.Linea l on(l.ID_Linea = c.ID_Linea);
 		
 --DimGeografia
-INSERT INTO Dimension.Geografia
-([ID_Candidato], 
-	[ID_Colegio], 
-	[ID_Diversificado], 
-	[NombreCandidato], 
-	[ApellidoCandidato], 
-	[Genero], 
-	[FechaNacimiento], 
-	[NombreColegio], 
-	[NombreDiversificado],
-	[FechaInicioValidez],
-	[FechaFinValidez],
-	FechaCreacion,
-	UsuarioCreacion,
-	FechaModificacion,
-	UsuarioModificacion,
-	ID_Batch,
-	ID_SourceSystem
-)
+--INSERT INTO Dimension.Geografia
+--([ID_Candidato], 
+--	[ID_Colegio], 
+--	[ID_Diversificado], 
+--	[NombreCandidato], 
+--	[ApellidoCandidato], 
+--	[Genero], 
+--	[FechaNacimiento], 
+--	[NombreColegio], 
+--	[NombreDiversificado],
+--	[FechaInicioValidez],
+--	[FechaFinValidez],
+--	FechaCreacion,
+--	UsuarioCreacion,
+--	FechaModificacion,
+--	UsuarioModificacion,
+--	ID_Batch,
+--	ID_SourceSystem
+--)
 SELECT p.ID_Pais, 
 		r.ID_Region, 
 		c.ID_Ciudad, 
@@ -356,25 +371,25 @@ FROM RepuestosWeb.DBO.Pais p
 GO
 
 --DimClientes
-INSERT INTO Dimension.Candidato
-([ID_Candidato], 
-	[ID_Colegio], 
-	[ID_Diversificado], 
-	[NombreCandidato], 
-	[ApellidoCandidato], 
-	[Genero], 
-	[FechaNacimiento], 
-	[NombreColegio], 
-	[NombreDiversificado],
-	[FechaInicioValidez],
-	[FechaFinValidez],
-	FechaCreacion,
-	UsuarioCreacion,
-	FechaModificacion,
-	UsuarioModificacion,
-	ID_Batch,
-	ID_SourceSystem
-)
+--INSERT INTO Dimension.Candidato
+--([ID_Candidato], 
+--	[ID_Colegio], 
+--	[ID_Diversificado], 
+--	[NombreCandidato], 
+--	[ApellidoCandidato], 
+--	[Genero], 
+--	[FechaNacimiento], 
+--	[NombreColegio], 
+--	[NombreDiversificado],
+--	[FechaInicioValidez],
+--	[FechaFinValidez],
+--	FechaCreacion,
+--	UsuarioCreacion,
+--	FechaModificacion,
+--	UsuarioModificacion,
+--	ID_Batch,
+--	ID_SourceSystem
+--)
 SELECT c.ID_Cliente,
 			c.PrimerNombre,
 			c.SegundoNombre,
