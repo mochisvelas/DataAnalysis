@@ -1,0 +1,439 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="741cb5e1-1419-4bfe-8ef6-9c536cd56be4" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Geografia</ID>
+  <Name>Geografia</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1758" scrolltop="-3141" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7324" y="11282" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Geografia" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3768" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b80e000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Dimension_Geografia" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1758</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-3141</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="178">
+            <Shape Id="SK Geografia" Expanded="false">
+              <Attributes>
+                <Attribute Id="SK Geografia" />
+                <Attribute Id="Codigo Postal" />
+                <Attribute Id="Fecha Creacion" />
+                <Attribute Id="Fecha Fin Validez" />
+                <Attribute Id="Fecha Inicio Validez" />
+                <Attribute Id="Fecha Modificacion" />
+                <Attribute Id="ID Ciudad" />
+                <Attribute Id="ID Pais" />
+                <Attribute Id="ID Region" />
+                <Attribute Id="Usuario Creacion" />
+                <Attribute Id="Usuario Modificacion" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+            <Shape Id="Nombre Ciudad" Expanded="false">
+              <Attributes>
+                <Attribute Id="Nombre Ciudad" />
+              </Attributes>
+              <Position x="247" y="20" />
+            </Shape>
+            <Shape Id="Nombre Region" Expanded="false">
+              <Attributes>
+                <Attribute Id="Nombre Region" />
+              </Attributes>
+              <Position x="475" y="20" />
+            </Shape>
+            <Shape Id="Nombre Pais" Expanded="false">
+              <Attributes>
+                <Attribute Id="Nombre Pais" />
+              </Attributes>
+              <Position x="702" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="0f030839-f140-4cb3-a081-f0b3133e7086">
+    <DataSourceViewID>Repuestos Web DWH</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="9642e02e-35ab-4e14-aa91-b3cc3bdcbbb9">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="e0fda3e3-25cb-4e4e-9a33-595d4295d836">
+      <ID>SK Geografia</ID>
+      <Name>SK Geografia</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="38841f4c-6a63-471b-9cb8-90bbc7b57ae6">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="56653816-eadb-4513-843f-48bd32290480">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>SK_Geografia</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="71ff0944-f6c9-4efd-b02a-bc6f21c01491">
+          <AttributeID>ID Pais</AttributeID>
+          <Name>ID Pais</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="938a373b-795f-402a-af5b-c26fadcbc348">
+          <AttributeID>ID Region</AttributeID>
+          <Name>ID Region</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3f2d0149-44ab-4ffb-982d-3ae15cf0d130">
+          <AttributeID>ID Ciudad</AttributeID>
+          <Name>ID Ciudad</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="11143af8-8476-4184-8e55-8af55af9b851">
+          <AttributeID>Codigo Postal</AttributeID>
+          <Name>Codigo Postal</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="39409e55-34e4-4203-8743-3355470909ad">
+          <AttributeID>Fecha Inicio Validez</AttributeID>
+          <Name>Fecha Inicio Validez</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bb3b3fc7-246f-4e01-94a5-2fd1735f81a0">
+          <AttributeID>Fecha Fin Validez</AttributeID>
+          <Name>Fecha Fin Validez</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2dd91c3e-3357-4452-925a-9641f993a7cf">
+          <AttributeID>Fecha Creacion</AttributeID>
+          <Name>Fecha Creacion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="aa991d1a-5302-454a-afcc-33b8259c0908">
+          <AttributeID>Usuario Creacion</AttributeID>
+          <Name>Usuario Creacion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="fe5e9187-4246-48d1-b09a-d7e497230ad3">
+          <AttributeID>Fecha Modificacion</AttributeID>
+          <Name>Fecha Modificacion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="30024d38-88ab-49f8-8926-b965ef1266f8">
+          <AttributeID>Usuario Modificacion</AttributeID>
+          <Name>Usuario Modificacion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d1d08859-2f8a-47af-8903-07f3461bd305">
+          <AttributeID>Nombre Ciudad</AttributeID>
+          <Name>Nombre Ciudad</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="94b157cc-81c8-4847-8641-d52bb5a09dbc">
+      <ID>ID Pais</ID>
+      <Name>ID Pais</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2817c0f3-a156-487b-ae4b-1961c91f2255">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f74dc0dd-1243-4f57-9dd0-26d5bbf0735b">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>ID_Pais</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b4828864-1997-4546-98d4-5c31cbd8d94b">
+      <ID>ID Region</ID>
+      <Name>ID Region</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="dc0ae245-94ce-4483-b987-6ababeeeb84f">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7055655a-4f84-4870-b44c-81394ca35ba3">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>ID_Region</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="93ecb734-7b0e-4708-8702-b5cddd9b9f0c">
+      <ID>ID Ciudad</ID>
+      <Name>ID Ciudad</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e8b7682e-ada9-4475-85e1-ef9a4f397c0f">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="dd5cb0e9-9156-4d95-a1d7-44381d0eda1d">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>ID_Ciudad</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2b5f15e6-cd31-4671-9ecd-ecd62e18fe32">
+      <ID>Nombre Pais</ID>
+      <Name>Nombre Pais</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f773089f-a5bf-41f1-a480-83980b529666">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="060e2e35-9d3d-495d-995d-a8e81d636337">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>NombrePais</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ea88bda8-79e2-43ab-8d10-d62f3bdf96bb">
+      <ID>Nombre Region</ID>
+      <Name>Nombre Region</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9b98356f-a435-43f4-a833-5a4242d73c6d">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="89f75bed-2097-4057-9425-0575364fecc8">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>NombreRegion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="6a867f12-b63e-4781-a1f1-6da571e57e58">
+          <AttributeID>Nombre Pais</AttributeID>
+          <Name>Nombre Pais</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4a360bb5-3e39-467f-a4ea-db69ac9a4949">
+      <ID>Nombre Ciudad</ID>
+      <Name>Nombre Ciudad</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="78f59ce7-9e4a-4db7-af80-fc6fe7cc672d">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c910370b-5d0c-4cda-9bce-96b5e8a9d744">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>NombreCiudad</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="81e464fd-8fdb-4628-9540-d36e6b526ef6">
+          <AttributeID>Nombre Region</AttributeID>
+          <Name>Nombre Region</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5e00017a-6ba9-40da-9903-e8f526b065b2">
+      <ID>Codigo Postal</ID>
+      <Name>Codigo Postal</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f80b9be9-be82-4190-956c-6f45d8cad8b2">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ec19f342-9282-4f6e-9961-2aa9ecf26f8d">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>CodigoPostal</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="fab0ec65-b423-44a3-94bf-daacf5417184">
+      <ID>Fecha Inicio Validez</ID>
+      <Name>Fecha Inicio Validez</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2675c804-fc1a-4630-befb-b386989aaeca">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7444b762-ebd4-4be6-9e8a-07c7871da9d2">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>FechaInicioValidez</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b1d0de61-cc63-40cd-b96e-c50f3e3c0875">
+      <ID>Fecha Fin Validez</ID>
+      <Name>Fecha Fin Validez</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bcd17e73-e4f3-471a-b572-b388cb06d505">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6a2bdfd4-1408-49ba-88e0-99ee6be640b1">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>FechaFinValidez</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9738743d-ed86-4d38-8271-f1d7c488b6fc">
+      <ID>Fecha Creacion</ID>
+      <Name>Fecha Creacion</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="befeb22a-0c68-4f1e-84f8-37f863a43d3d">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6477d71b-f7c5-41dd-a07c-d78e4335ecf8">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>FechaCreacion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="276d97f5-6070-4d08-93e9-9ecbce1473d8">
+      <ID>Usuario Creacion</ID>
+      <Name>Usuario Creacion</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="975894e1-1b64-42d4-8201-5e617fb22068">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a7ee7050-9eab-4985-bb60-5ae986f70e76">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>UsuarioCreacion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f19c4aee-94b8-4757-92dc-2d34a4f17ba4">
+      <ID>Fecha Modificacion</ID>
+      <Name>Fecha Modificacion</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6cc6a64c-ac4b-4d78-8d91-c8a5e33a7f74">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e5a3c1e8-b5fa-4bc4-ab8b-eddf1f0400ca">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>FechaModificacion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9369e1db-ff7d-4cb3-abf8-d37867b6a92c">
+      <ID>Usuario Modificacion</ID>
+      <Name>Usuario Modificacion</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f3dea2ae-495e-4a34-a325-0fff8080f95a">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1968ebed-244b-4822-b63a-3641ccb51497">
+            <TableID>Dimension_Geografia</TableID>
+            <ColumnID>UsuarioModificacion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="da204063-d015-4be3-a303-3818a93e1b0f">
+      <ID>Hierarchy</ID>
+      <Name>Hierarchy</Name>
+      <Levels>
+        <Level dwd:design-time-name="edaece11-6e48-4ff9-a87a-51135e74b08e">
+          <ID>Nombre Pais</ID>
+          <Name>Nombre Pais</Name>
+          <SourceAttributeID>Nombre Pais</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="a3a755ad-75d7-4a36-91da-c7f06886a481">
+          <ID>Nombre Region</ID>
+          <Name>Nombre Region</Name>
+          <SourceAttributeID>Nombre Region</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="47fd1aa3-0d72-4822-ba1a-7de1600fe323">
+          <ID>Nombre Ciudad</ID>
+          <Name>Nombre Ciudad</Name>
+          <SourceAttributeID>Nombre Ciudad</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>
