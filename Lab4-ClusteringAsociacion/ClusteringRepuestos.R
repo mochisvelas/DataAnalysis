@@ -49,11 +49,11 @@ clusterk5 <- kmeans(dfScaledParts, 5, nstart = 25)
 #Cluster assignation
 #clusterk3$cluster
 #Each cluster's size
-#clusterk4$size
+#clusterk5$size
 #Cluster's centers
-#clusterk2$centers
+clusterk5$centers
 
-#fviz_cluster(clusterk5, geom = "point", data = dfScaledParts) + ggtitle("k = 2")
+#fviz_cluster(clusterk3, geom = "point", data = dfScaledParts) + ggtitle("k = 2")
 
 grafica1 <- fviz_cluster(clusterk2, geom = "point", data = dfScaledParts) + ggtitle("k = 2")
 grafica2 <- fviz_cluster(clusterk3, geom = "point",  data = dfScaledParts) + ggtitle("k = 3")
@@ -65,15 +65,15 @@ grid.arrange(grafica1, grafica2, grafica3, grafica4, nrow = 2)
 
 #spot optimum k
 fviz_nbclust(dfScaledParts, kmeans, method = "wss") +
-  geom_vline(xintercept = 4, linetype = 2)
+  geom_vline(xintercept = 5, linetype = 2)
 
-Cluster4Parts<-as.data.frame(clusterk4$cluster)
+Cluster5Parts<-as.data.frame(clusterk5$cluster)
 
-mergedParts<-merge(Cluster4Parts,dfPartsRaw,by=0, all=TRUE)
+mergedParts<-merge(Cluster5Parts,dfPartsRaw,by=0, all=TRUE)
 
 names(mergedParts)[2]<-"clustno"
 mergedParts<-subset(mergedParts, select=-c(Row.names))
 
 aggregate(mergedParts,by=list(mergedParts$clustno),FUN=mean)
 
-fviz_cluster(clusterk4, data = dfScaledParts)
+fviz_cluster(clusterk5, data = dfScaledParts, labelsize = 0, pointsize = 0)
